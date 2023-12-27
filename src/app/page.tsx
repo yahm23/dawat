@@ -1,7 +1,7 @@
 'use client';
-import HomePage from './homepage/page';
+import HomePage from '@/app/homepage/page';
 import React, { useEffect } from 'react';
-import { useAppSelector } from '../lib/hooks'
+import { useAppSelector } from '@/lib/hooks'
 import { AuthRouter } from '@/components/authRouter';
 
 export default function App() {

@@ -1,6 +1,6 @@
 'use client';
 import React, { useEffect } from 'react';
-import { useAppSelector } from '../../lib/hooks'
+import { useAppSelector } from '@/lib/hooks'
 import { AuthRouter } from '@/components/authRouter';
 
 
