@@ -1,16 +1,24 @@
-import React from 'react'
+'use client';
+import React, { useEffect } from 'react';
 import { initializeApp } from 'firebase/app'
 import { config } from '../../config/config'
 import { getAuth } from 'firebase/auth';
+import { useAppSelector } from '../../lib/hooks'
+import { AuthRouter } from '@/components/authRouter';
 
+// export const firebaseApp = initializeApp(config.firebase);
+// export const auth = getAuth(firebaseApp);
 
-export const firebaseApp = initializeApp(config.firebase);
-export const auth = getAuth(firebaseApp);
+const Page = () => {
+  const loggedStatus = useAppSelector(state => state.authReducer.loggedIn)
 
-const page = () => {
+  useEffect(()=>{
+    return () => AuthRouter({loggedStatus})
+  },[loggedStatus]);
+  
   return (
-    <div>login page</div>
+    <div>login Page</div>
   )
 }
 
-export default page
+export default Page

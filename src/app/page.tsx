@@ -1,18 +1,14 @@
 'use client';
-
 import HomePage from './homepage/page';
-import React, { useEffect, useState } from 'react';
-import { redirect } from 'next/navigation'
+import React, { useEffect } from 'react';
 import { useAppSelector } from '../lib/hooks'
+import { AuthRouter } from '@/components/authRouter';
 
 export default function App() {
   const loggedStatus = useAppSelector(state => state.authReducer.loggedIn)
 
   useEffect(()=>{
-      if (loggedStatus){
-        console.log('logged in');
-        redirect('/profile')
-      }
+    return () => AuthRouter({loggedStatus})
   },[loggedStatus]);
 
   return (
