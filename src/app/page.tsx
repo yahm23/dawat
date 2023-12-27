@@ -3,17 +3,17 @@
 import HomePage from './homepage/page';
 import React, { useEffect, useState } from 'react';
 import { redirect } from 'next/navigation'
-import { useAppSelector, useAppDispatch } from '../lib/hooks'
+import { useAppSelector } from '../lib/hooks'
 
 export default function App() {
-  const loggedStatusX = useAppSelector(state => state.loggedReducer.loggedInStatus)
+  const loggedStatus = useAppSelector(state => state.authReducer.loggedIn)
 
   useEffect(()=>{
-      if (loggedStatusX){
+      if (loggedStatus){
         console.log('logged in');
         redirect('/profile')
       }
-  },[loggedStatusX]);
+  },[loggedStatus]);
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
