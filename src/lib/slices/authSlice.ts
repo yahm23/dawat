@@ -4,7 +4,7 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 interface AuthState {
     user: {
         email: string | null,
-        uid: string | null
+        userId: string | null
     },
     loading: boolean,
     error: string | null,
@@ -14,7 +14,7 @@ interface AuthState {
 const initialState = {
     user: {
         email: null,
-        uid: null
+        userId: null
     },
     loading: false,
     error: null,
@@ -28,8 +28,8 @@ const authSlice = createSlice({
     setUserEmail(state, action: PayloadAction<string>) {
         state.user.email = action.payload;
     },
-    setUId(state, action: PayloadAction<string>) {
-      state.user.uid = action.payload;
+    setUserId(state, action: PayloadAction<string>) {
+      state.user.userId = action.payload;
     },
     setLoading(state, action: PayloadAction<boolean>) {
       state.loading = action.payload;
@@ -44,5 +44,5 @@ const authSlice = createSlice({
 })
 
 
-export const { setUserEmail, setUId, setLoading, setError, setLoggedIn } = authSlice.actions
+export const { setUserEmail, setUserId, setLoading, setError, setLoggedIn } = authSlice.actions
 export default authSlice.reducer;
