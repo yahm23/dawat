@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 
-interface AuthState {
+export interface AuthState {
   user: {
     email: string | null,
     userId: string | null
@@ -10,13 +10,13 @@ interface AuthState {
   loggedIn: boolean
 }
 
-const initialState = {
-    user: {
-        email: null,
-        userId: null
-    },
-    error: null,
-    loggedIn: false
+export const initialState = {
+  user: {
+    email: null,
+    userId: null
+  },
+  error: null,
+  loggedIn: false
 } as AuthState
 
 const authSlice = createSlice({
