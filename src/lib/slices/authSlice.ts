@@ -5,8 +5,7 @@ interface AuthState {
   user: {
     email: string | null,
     userId: string | null
-    },
-  loading: boolean,
+  },
   error: string | null,
   loggedIn: boolean
 }
