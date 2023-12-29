@@ -6,6 +6,7 @@ export const makeStore = () => {
     reducer: {
       authReducer
     }
+      auth: authReducer
   })
 }
 

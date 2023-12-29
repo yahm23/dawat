@@ -5,7 +5,7 @@ import { useAppSelector } from '@/lib/hooks'
 import { AuthRouter } from '@/components/authRouter';
 
 export default function App() {
-  const loggedStatus = useAppSelector(state => state.authReducer.loggedIn)
+  const loggedStatus = useAppSelector(state => state.auth.loggedIn)
 
   useEffect(()=>{
     return () => AuthRouter({loggedStatus})

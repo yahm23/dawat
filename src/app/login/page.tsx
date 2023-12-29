@@ -5,7 +5,7 @@ import { AuthRouter } from '@/components/authRouter';
 
 
 const Page = () => {
-  const loggedStatus = useAppSelector(state => state.authReducer.loggedIn)
+  const loggedStatus = useAppSelector(state => state.auth.loggedIn)
 
   useEffect(()=>{
     return () => AuthRouter({loggedStatus})
