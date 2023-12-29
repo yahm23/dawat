@@ -1,12 +1,16 @@
 'use client';
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation'
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import {auth} from '@/config/config';
 import { setLoggedIn, setUserEmail, setUserId } from '@/lib/slices/authSlice';
+import { useAppDispatch } from '@/lib/hooks'
+import {auth} from '@/config/config';
 
 const SignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const dispatch = useAppDispatch();
+  const router = useRouter();
 
   const [
     createUserWithEmailAndPassword,
@@ -19,9 +23,10 @@ const SignIn = () => {
     const result = await createUserWithEmailAndPassword(email, password);
     
     if (result) {
-        setLoggedIn(true);
-        setUserEmail(result.user.email ? result.user.email : '');
-        setUserId(result.user.uid ? result.user.uid : '');
+        dispatch(setLoggedIn(true));
+        dispatch(setUserEmail(result.user.email ? result.user.email : ''));
+        dispatch(setUserId(result.user.uid ? result.user.uid : ''));
+        router.push('/profile', { scroll: false })
     }
   }
 
@@ -48,12 +53,11 @@ const SignIn = () => {
                     <p>Oops! Something went wrong, try again in a bit.</p>
                 </div>
             );
-      }
+    }
   }
   if (loading) {
-    return <p>Loading...</p>;
+    return <p>Loading Component...</p>;
   }
-
 
   return (
     <div className="App">
